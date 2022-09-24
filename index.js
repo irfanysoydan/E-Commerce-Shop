@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import authRoute from "./routes/auth.js"
+import userRoute from "./routes/user.js"
 
 const app = express();
 app.use(express.json()); 
@@ -15,5 +16,5 @@ app.listen(5000, () => {
         .catch((err) => { console.log("ERROR DB CONNECTION") })
 })
 
-
+app.use("/api/users", userRoute);
 app.use("/api/auth", authRoute);
